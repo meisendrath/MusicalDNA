@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFit" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="700" height="700"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchcenter.png" translatesAutoresizingMaskIntoConstraints="NO" id="GTD-Vi-qGf">
+                    <rect key="frame" x="0.0" y="7" width="700" height="686"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="GTD-Vi-qGf" secondAttribute="height" multiplier="50:49" id="jhQ-jb-b0q"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="3pe-nc-oul" userLabel="pbmdna">
+                    <rect key="frame" x="0.0" y="463" width="700" height="222"/>
+                    <subviews>
+                        <imageView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="launch_pbmdna.png" translatesAutoresizingMaskIntoConstraints="NO" id="MHj-PC-Et2">
+                            <rect key="frame" x="210" y="19" width="280" height="185"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="MHj-PC-Et2" secondAttribute="height" multiplier="56:37" id="Sfu-GA-fYO"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="MHj-PC-Et2" secondAttribute="centerX" id="9I9-lZ-gwa"/>
+                        <constraint firstItem="MHj-PC-Et2" firstAttribute="centerY" secondItem="3pe-nc-oul" secondAttribute="centerY" constant="0.5" id="LrR-I6-tfN"/>
+                        <constraint firstAttribute="height" secondItem="MHj-PC-Et2" secondAttribute="height" multiplier="1.2" id="qWm-tq-KP1"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="freeplay_launch.png" translatesAutoresizingMaskIntoConstraints="NO" id="Clp-X3-0la">
+                    <rect key="frame" x="70" y="35" width="560" height="156"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Clp-X3-0la" secondAttribute="height" multiplier="18:5" id="m7B-Y3-edY"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Clp-X3-0la" firstAttribute="centerY" relation="lessThanOrEqual" secondItem="GTD-Vi-qGf" secondAttribute="top" multiplier="0.7" priority="750" id="2De-4l-EBe"/>
+                <constraint firstItem="3pe-nc-oul" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5EX-t2-HBR"/>
+                <constraint firstItem="GTD-Vi-qGf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" id="D7b-QE-6W1"/>
+                <constraint firstItem="GTD-Vi-qGf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="EgQ-fs-Ob5"/>
+                <constraint firstItem="3pe-nc-oul" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="Erc-0o-3fi"/>
+                <constraint firstItem="GTD-Vi-qGf" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="trailing" id="GQU-3G-gdN"/>
+                <constraint firstItem="GTD-Vi-qGf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HrU-PT-irO"/>
+                <constraint firstItem="3pe-nc-oul" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MnI-f1-Ckl"/>
+                <constraint firstItem="Clp-X3-0la" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Msi-Yp-Dvg"/>
+                <constraint firstItem="3pe-nc-oul" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GTD-Vi-qGf" secondAttribute="bottom" priority="750" id="OSl-Oa-bk0"/>
+                <constraint firstItem="3pe-nc-oul" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="0.95" constant="20" symbolic="YES" id="Te0-1Q-FCD"/>
+                <constraint firstItem="Clp-X3-0la" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="0.05" id="Xyd-mu-5xb"/>
+                <constraint firstItem="GTD-Vi-qGf" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="bottom" id="dKo-iS-2Ec"/>
+                <constraint firstItem="MHj-PC-Et2" firstAttribute="width" secondItem="GTD-Vi-qGf" secondAttribute="width" multiplier="0.4" id="gT7-fY-X1d"/>
+                <constraint firstItem="Clp-X3-0la" firstAttribute="width" secondItem="GTD-Vi-qGf" secondAttribute="width" multiplier="0.8" id="kS6-de-j69"/>
+                <constraint firstItem="GTD-Vi-qGf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" id="v08-kc-q4s"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="588" y="480"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="freeplay_launch.png" width="636" height="170"/>
+        <image name="launch_pbmdna.png" width="346" height="232"/>
+        <image name="launchcenter.png" width="996" height="1260"/>
+    </resources>
+</document>

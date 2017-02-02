@@ -1,0 +1,77 @@
+
+echo making MDNA.png: Gameplay
+~/bin/SpriteAtlasMaker -2 -r -w 1024 -m 1 -b \
+-pr0 \
+-q MDNA/touch_dot.png \
+-q -pr1 MDNA/sparkle.png \
+-q -pr1 MDNA/sparkleRGB.png \
+-q -pr1 MDNA/sparkleA.png \
+-pr0 \
+-q MDNA/sparklestar.png \
+-q MDNA/sparklestarRGB.png \
+-q MDNA/sparklestarA.png \
+-q MDNA/sparkledot.png \
+-q MDNA/sparkledotRGB.png \
+-q MDNA/sparkledotA.png \
+-q MDNA/sparkledot2.png \
+-q MDNA/sparkledot2RGB.png \
+-q MDNA/sparkledot2A.png \
+-q MDNA/dot.png \
+-q MDNA/dothighlight.png \
+-q MDNA/dotrecent \
+-q MDNA/dotroot \
+-q MDNA/dotsquare.png \
+-q MDNA/dotdiamond.png \
+-q MDNA/dotstar.png \
+-q MDNA/line0.png \
+-q MDNA/line1.png \
+-q MDNA/line2.png \
+-q MDNA/line3.png \
+-q MDNA/line4.png \
+-q MDNA/line5.png \
+-q MDNA/line6.png \
+-o processed_atlases/MDNA
+
+echo making MDNA2.png: Large Objects
+~/bin/SpriteAtlasMaker -2 -r -w 1384 -m 1 -b \
+-q -pr1 MDNA/cmenubar.png \
+-q -pr3 MDNA/cmenubarbg.png \
+-q -pr1 MDNA/freeplay.png \
+-o processed_atlases/MDNA2
+
+echo making visualizer animations...
+~/bin/SpriteAtlasMaker -2 -r -w 1024 -m 1 -b \
+-q MDNA/instrument_art/instrument0_line/line1.png \
+-q MDNA/instrument_art/instrument0_line/line2.png \
+-q MDNA/instrument_art/instrument0_line/line3.png \
+-q MDNA/instrument_art/instrument0_line/line4.png \
+-q MDNA/instrument_art/instrument0_line/line5.png \
+-q MDNA/instrument_art/instrument0_line/line6.png \
+-q MDNA/instrument_art/instrument0_line/line7.png \
+-o processed_atlases/instrument0_line
+~/bin/SpriteAtlasMaker -2 -r -w 1024 -m 1 -b \
+-q MDNA/instrument_art/instrument0_anim/line1.png \
+-q MDNA/instrument_art/instrument0_anim/line2.png \
+-q MDNA/instrument_art/instrument0_anim/line3.png \
+-q MDNA/instrument_art/instrument0_anim/line4.png \
+-q MDNA/instrument_art/instrument0_anim/line5.png \
+-q MDNA/instrument_art/instrument0_anim/line6.png \
+-q MDNA/instrument_art/instrument0_anim/line7.png \
+-o processed_atlases/instrument0_anim
+~/bin/SpriteAtlasMaker -2 -r -w 512 -m 1 -b \
+-q MDNA/instrument_art/instrument0_overlay/line1.png \
+-q MDNA/instrument_art/instrument0_overlay/line2.png \
+-q MDNA/instrument_art/instrument0_overlay/line3.png \
+-q MDNA/instrument_art/instrument0_overlay/line4.png \
+-q MDNA/instrument_art/instrument0_overlay/line5.png \
+-q MDNA/instrument_art/instrument0_overlay/line6.png \
+-o processed_atlases/instrument0_overlay
+~/bin/SpriteAtlasMaker -2 -r -w 512 -m 1 -b \
+-q MDNA/instrument_art/instrument0_note/dot.png \
+-q MDNA/instrument_art/instrument0_note/dotrecent.png \
+-q MDNA/instrument_art/instrument0_note/dothighlight.png \
+-q MDNA/instrument_art/instrument0_note/dotroot.png \
+-q MDNA/instrument_art/instrument0_note/dotrootrecent.png \
+-q MDNA/instrument_art/instrument0_note/dotslur.png \
+-q MDNA/instrument_art/instrument0_note/dotrootslur.png \
+-o processed_atlases/instrument0_note
