@@ -1,0 +1,20 @@
+struct ActiveLine {  
+  int track;               // from the MIDI file
+  int instrument_index;    // which instrument to use from the soundfont
+  int art_index;           // line art set (theoretically, different art for different instruments)
+  int note1;               // 0..11 – the note “orbs” – 0 is “C” at 12o’clock, 1 is “C#/Db” – clockwise 
+  int note2;               // with note1, the “endcap” orbs of a line
+  int notenum1;            // note number – the actual MIDI note – 60 is “middle C” 
+  int notenum2;            // with notenum1, the “endcap” notes of a line
+  int line_length;         // the absolute interval between note1 and note2 
+                           // ([1:red, 2:orange, 3:yellow, 4:green, 5:blue, 6:purple]
+  int is_melody;           // “melody” lines are rendered as a sprite sequence between two orbs
+  int done_melody;         // the sprite sequence for a melody line is rendered once through
+  int orphan;              // 1 if both endcaps for the current line are inactive (silent)
+  float art_alpha;         // transparency value for the line art
+  double start_time;       // when was this line first active
+  double last_time;        // when is the last time this line was active
+};
+
+
+static std::vector<ActiveLine>			m_ActiveLines;

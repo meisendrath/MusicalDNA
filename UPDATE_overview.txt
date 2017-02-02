@@ -1,0 +1,19 @@
+Each time UPDATE is called (once per frame):
+(There are several separate ‘update’ functions that are called one after another)
+The app has mp3_slave_mode = true if there is a ‘real’ audio file being played while the MIDI file contents are being visualized. If there is no ‘real’ audio file, only a MIDI file, then mp3_slave_mode is false.
+
+1) LVisualizer::update checks to see if the user has just missed a note (when a streak is broken, the ‘real’ audio volume is temporarily muted), then calls NEW_CONTROLLER_update.
+
+2) If no time has elapsed since the last time NEW_CONTROLLER_update was called, it exits.
+3) The elapsed song_time is calculated, adjusting for slower playback rates available in practice mode. If in mp3_slave_mode, the MP3 player is queried for its time position in the song and the song_time is set accordingly. (Songs can be ‘scrubbed’ back and forth on the timeline, or reset to the beginning.)
+4) If in mp3_slave_mode, the effective length of playback is set to the shorter of the MP3 file or the MIDI file.
+5) If more time has elapsed since the song started than ‘should have’ elapsed (that is, more than the ‘effective time’ has passed) and we aren’t actually dragging the scrub bar control, then playback is stopped.
+6) If a streak was broken, the MP3 volume is silenced. 
+7) If the MP3 volume isn’t at its original setting, it’s brought back to that setting over the span of two seconds.
+8) For each track in gRecordedSong, NEW_CONTROLLER_update_track is called with the current song_time.
+
+9) NEW_CONTROLLER_update_track ignores ‘part’ tracks. For all non-part tracks, it loops through the track’s events from its previously stored playback index through the end of the track. (The index of the playback point is set by user interaction with the scrub bar control and the play/pause buttons. Starting a song ‘from scratch’ means a playback point of <=0.) If it reaches an event with a timeStamp that is greater than the current song_time, it breaks out of the loop.
+10) Otherwise, it checks to see if the current event is a dependent note and sets it to mute if its lead note wasn’t hit.
+11) It then forwards the event to NEW_CONTROLLER_execute_event, with audio/visual muting set according to a combination of mp3_slave_mode / scrubbing mode / dependent mode.
+
+12) NEW_CONTROLLER_execute_event routes the current event to whatever is listening for it (e.g. the synthesizer, the visualizer, the scorekeeper, etc.).  In relevant part, it is what calls the NEW_VISUALIZER_note function that populates gViz.

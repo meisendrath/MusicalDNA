@@ -1,0 +1,21 @@
+class TVizTrackData {
+public:
+          TVizTrackData() { instrument_index = 0; art_index = 0; art_alpha = 1.0f; reset(0); }
+		  
+  int        note_active[12];          // orbs – set by MIDI note on, cleared by MIDI note off
+  int        note_was_active[12];      // same as note_active, except not cleared by note off
+  double      note_timestamp[12];      // the time that a note (orb) starts
+  double      note_end_timestamp[12];  // the time that a note (orb) ends
+  int        instrument_index;         // instrument from the soundfont assigned to the track when played
+  int        art_index;                // which artwork to use when rendering
+  float      art_alpha;
+public:
+  void      reset(double timeStamp) {
+    for (int i=0; i<12; i++) {
+      note_active[i] = 0;
+      note_was_active[i] = 0;
+      note_end_timestamp[i] = note_timestamp[i] = timeStamp;
+    }
+  }
+};
+static std::vector<TVizTrackData>    gViz;

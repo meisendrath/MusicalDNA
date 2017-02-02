@@ -1,0 +1,18 @@
+In the 2D Visualizer, each time RENDER is called (once per frame):
+(There are multiple 'render' functions and sub-functions. This is a collapsed overview.)
+
+1) The twelve ‘silent’ note orbs are rendered (the placeholders). (0 is at the top of the circle, incrementing clockwise to 11.)
+2) Note names (labels) are rendered, if that option is turned on. (Options: Off/Flats/Sharps)
+3) If we are in a state of active CenterFire game play/practice, then the ‘oncoming’ notes, chords, and melodies are calculated and drawn as emanating from the center of the screen.  [This doesn’t happen in View mode, or in Freeplay mode.]
+
+4) m_ActiveLines is populated by NEW_VISUALIZER_gather_lines – which is called in a loop for each possible line length [1..11], which is nested within a loop for each track/channel in gViz
+	4a) NEW_VISUALIZER_gather_lines loops through each possible ‘starting’ orb [0..11], adds the line length currently being processed to get an ‘ending’ orb, and then checks to see if one or both of the ‘endcap’ orbs are ‘active’, according to gViz. (An ‘active’ note is audible. ‘Orbs’ are active if any MIDI note that resolves to that orb is active. That is, the “C” orb [0] will be active if a MIDI “C” in any octave is sounding. MIDI note number % 12 = orb number.)
+	4b) If neither endcap orb is active, there is no line to be considered.
+	4c) If only one endcap orb is active, there may be a melody line to be drawn from the inactive orb to the active one. It depends on whether there have been intervening events between ‘now’ and the time the inactive orb was last active.
+	4d) If both endcap orbs are active, there should be a chord line.
+	4e) If a line should exist, it checks m_ActiveLines to see if a line with the same endcaps already exists. If so, it updates the ‘last_time’ timestamp for that line. If not, it adds a new entry to m_ActiveLines. It may turn an existing chord line into a melody line.
+5) m_ActiveLines is looped over to ‘kill’ lines. Chord lines are ‘killed’ if it has been more than one-half second since the ‘last_time’ they were active. Melody lines are ‘killed’ if their sprite sequence animation is complete. A line is killed by deleting it from m_ActiveLines. If it isn’t marked to be killed, but neither endcap orb is active in gViz, then it is marked as an orphan. [Orphan lines will, presumably, be killed in short order because more than one-half second will pass (chords) or their animation sequence will end (melodies).]
+6) All entries in m_ActiveLines are rendered to the screen. 
+	6a) The transparency value for chord lines is increased over time so that they fade over the span of one-half second since the ‘last_time’ they were active.
+	6b) The proper frame of the sprite animation for a melody line is calculated by evenly spacing the available number of frames over a span of one-half second. Once the last frame is shown, the melody line is marked as ‘done’, which sets it up to be killed.
+7) For each of the orbs [0..11], gViz is looped over to see if there are notes that are active or that have ended within the last one-half second. The proper fade value (and frame number, if there is a sprite sequence) is calculated. Each ‘note’ is rendered to the screen.
